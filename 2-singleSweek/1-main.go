@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	ip = "http://47.74.235.122:33333"
+	ip = "http://127.0.0.1:8081"
 
 	from = "0xe79fead329b69540142fabd881099c04424cc49f"
 

@@ -1,3 +1,0 @@
-[DEBUG][saokuai.go:295]2019/12/06 15:32:08 [NeedContractAddr:  TheContractAddr: 0x22c614bb0fc26bbdc90bdb88c2df87d377917d5c blockNumber: 6930028]
-[INFO][saokuai.go:322]2019/12/06 15:32:37 [blockNumber: 7732621 ,contractTotalSupply: 10000000 ,contractAddress: 0x4d4db69111deed3782056f067bfe799a4efa8b4b ,contractOwner: 9e19f91a85ca1bccbe783ad8190a55534615c544]
-[INFO][saokuai.go:322]2019/12/06 15:36:03 [blockNumber: 7732621 ,contractTotalSupply: 10000000 ,contractAddress: 0x4d4db69111deed3782056f067bfe799a4efa8b4b ,contractOwner: 9e19f91a85ca1bccbe783ad8190a55534615c544]

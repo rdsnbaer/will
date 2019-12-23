@@ -16,7 +16,7 @@ import (
 )
 
 const (
-	ip = "http://47.74.235.122:33333"
+	ip = "http://127.0.0.1:8081"
 
 	//contractAddress = "0x8c78e9686442cd2fb8b3217d34d9e55c1b2171da"
 	contractAddress = "0x4d4db69111deed3782056f067bfe799a4efa8b4b"

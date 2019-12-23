@@ -12,11 +12,8 @@ import (
 )
 
 const (
-	// http://8.209.64.180:8088/coinList?pageNo=1&pageSize=20
-	// http://8.209.64.180:8088/transferList?symbol=IOP&pageNo=1&pageSize=20
-	// http://8.209.64.180:8088/coinInfo?symbol=IOP
-	ipJava = "http://8.209.64.180:8088"
-	ipNet  = "http://47.74.235.122:33333"
+	ipJava = "http://127.0.0.1:8081"
+	ipNet  = "http://127.0.0.1:8082"
 	hash1  = "0x0a649348dec7300f180786ba1b1e5b9097b8f3ed4848d390ab5243f49f90f3fa"
 
 	coinListStr     = "/coinList?"
