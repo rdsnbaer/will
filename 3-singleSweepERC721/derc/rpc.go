@@ -49,7 +49,7 @@ func GetTransactions(jsonMap map[string]interface{}) []interface{} {
 	}
 
 	txs := jsonResult["transactions"].([]interface{})
-	if txs == nil {
+	if len(txs) == 0 {
 		return nil
 	}
 
@@ -130,7 +130,7 @@ func GetDeployContractInfo(res map[string]interface{}, contractAddr, ip string) 
 
 	var q Query
 	var contract Contract
-	fmt.Println("ok")
+
 	name, err := q.GetNFTName(from, contractAddr, blockNumber, ip)
 	if err == nil {
 		contract.Name_C = name

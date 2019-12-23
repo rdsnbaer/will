@@ -99,7 +99,6 @@ func IsString(res string) (string, error) {
 	fmt.Println("5.1-result:", res)
 
 	r := res[66:]
-	fmt.Println("1ok")
 	s := r[:64]
 	k := RemoveZero(s)
 

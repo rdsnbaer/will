@@ -69,9 +69,10 @@ func DealThreeFiled(res, log map[string]interface{}, topic []interface{}, contra
 func DealTransferInfo(res map[string]interface{}, topic []interface{}, contractAddr, ip string) {
 	topic_0 := topic[0].(string)
 	hash := res["transactionHash"].(string)
+	var e Exec
 
-	if topic_0 == TransferMintBurnTopic {
-		var e Exec
+	switch topic_0 {
+	case TransferMintBurnTopic:
 		topic_1 := topic[1].(string)
 		topic_2 := topic[2].(string)
 
@@ -90,11 +91,13 @@ func DealTransferInfo(res map[string]interface{}, topic []interface{}, contractA
 		} else {
 			e.GetTransferFromInfo(res, topic, contractAddr, ip)
 		}
-	} else {
-		fmt.Println("6.2-topic[0] is not TransferMintBurnTopic, hash:", hash)
-		loginfo.Error("6.2-topic[0] is not TransferMintBurnTopic, hash:", hash)
+	case ApproveTopic:
+		fmt.Println("ApproveTopic", ApproveTopic)
+		e.GetApproveInfo(res, topic, contractAddr, ip)
+	default:
+		fmt.Println("6.2-topic[0] is not knowTopic, hash:", hash)
+		loginfo.Error("6.2-topic[0] is not knowTopic, hash:", hash)
 	}
-
 }
 
 func (e *Exec) GetMintInfo(res map[string]interface{}, topic []interface{}, contractAddr, ip string) {
@@ -142,6 +145,7 @@ func (e *Exec) GetBurnInfo(res map[string]interface{}, topic []interface{}, cont
 			fmt.Println("7.3-Burn, from:", from, ", tokenID:", tokenID, ", operator:", operator)
 			loginfo.Info("7.3-Burn, from:", from, ", tokenID:", tokenID, ", operator:", operator)
 			loginfo.Info("-------------------------------------------------------------------")
+			fmt.Println()
 		} else {
 			fmt.Println("7.4-Burn err, operator:", operator, ",from: ", from, ", tokenID:", tokenID,
 				", hash:", hash)
@@ -226,6 +230,23 @@ func (e *Exec) GetChangeContractOwnerInfo(res map[string]interface{}, topic []in
 	}
 }
 
-func (e *Exec) GetApproveInfo(topic []interface{}, contractAddr, ip interface{}) {
+func (e *Exec) GetApproveInfo(res map[string]interface{}, topic []interface{}, contractAddr, ip interface{}) {
+	operator, _ := IsAddress(res["from"].(string))
+	from, _ := IsAddress(topic[1].(string))
+	hash := res["transactionHash"].(string)
+	if from == operator {
+		to, _ := IsAddress(topic[2].(string))
+		id := IsNumber(topic[3].(string))
+		tokenID := fmt.Sprintf("%v", id)
 
+		fmt.Println("Approve, from:", from, ", to:", to, ", tokenId:", tokenID,
+			", operator:", operator, ", hash:", hash)
+		loginfo.Info("Approve, from:", from, ", to:", to, ", tokenId:", tokenID,
+			", operator:", operator, ", hash:", hash)
+		loginfo.Info("-------------------------------------------------------------------")
+		fmt.Println()
+	} else {
+		fmt.Println("not owner operation, owner:", from, ", operator:", operator, ", hash:", hash)
+		loginfo.Error("not owner operation, owner:", from, ", operator:", operator, ", hash:", hash)
+	}
 }
