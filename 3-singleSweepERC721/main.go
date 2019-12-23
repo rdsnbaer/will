@@ -8,14 +8,9 @@ import (
 )
 
 const (
-	//blockNum = "8572873" // 部署合约
-	//blockNum        = "8573401" // mint
-	//blockNum = "8579572" //setApprovalForAll
 	blockNum = "8590137" // changeContractOwner
-	//blockNum = "7"
-	ip = "http://47.74.235.122:33333"
-	//ip              = "http://10.150.18.231:8031"
-	contractAddress = "0x6067e36eb361f8f9a355c744fe98aae3d2bdb92e" //测试网
+	ip              = "http://10.150.18.231:8031"
+	contractAddress = "0x6067e36eb361f8f9a355c744fe98aae3d2bdb92e" 
 )
 
 func main() {
